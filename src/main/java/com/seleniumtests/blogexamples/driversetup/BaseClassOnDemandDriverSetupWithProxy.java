@@ -28,12 +28,14 @@ public class BaseClassOnDemandDriverSetupWithProxy {
     @AfterTest
     public void teardown() {
         if (driver != null) {
+            System.out.println("Inside the if loop");
             driver.quit();
         }
     }
 
     public WebDriver getDriver() {
         if (driver == null) {
+            System.out.println("Inside the if loop");
             System.setProperty("webdriver.chrome.driver", "chromedriver");
             ChromeOptions chromeOptions = new ChromeOptions();
 
@@ -59,6 +61,7 @@ public class BaseClassOnDemandDriverSetupWithProxy {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver(chromeOptions);
         }
+        System.out.println("Outside the if loop")
         return driver;
     }
 }
